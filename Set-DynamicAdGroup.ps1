@@ -30,7 +30,7 @@ Function Set-DynamicAdGroup
     Get-ADUser suported -Filter
 
     .LINK
-    https://
+    https://raw.githubusercontent.com/EtsHere/Set-DynamicAdGroup/master/Set-DynamicAdGroup.ps1
     #>
 
 [CmdletBinding(SupportsShouldProcess)]
