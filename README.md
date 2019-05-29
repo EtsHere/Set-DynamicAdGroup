@@ -28,3 +28,15 @@
     .LINK
     https://
     #>
+
+#Usage
+
+$GroupList = @(
+    @{ToGroup="new-users";FromGroup="";FromOU="";FromFilter="Name -like 'Adam *'"}
+    @{ToGroup="all_admins";FromGroup="sql-admins","sccm-admins";FromOU="";FromFilter=""} | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru | Select ToGroup,FromGroup,FromOU,FromFilter})
+
+ForEach ($item in $GroupList)
+    {
+    Set-DynamicADGroup -ToGroup $item.ToGroup -FromGroup $item.FromGroup -FromOU $item.FromOU -FromFilter $item.FromFilter -WhatIf -Verbose
+    $item = $null
+    }
