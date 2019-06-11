@@ -96,7 +96,7 @@ Param(
 
             #--- Compare and add users from group ---
             $AllowedUsers = $Users | Where {$_.SamAccountName -notin $AnyUsers.SamAccountName}
-            Write-Output "Lubatud: $($AllowedUsers.Count)"
+            Write-Output "Allowed count: $($AllowedUsers.Count)"
             ForEach ($AllowedUser in $AllowedUsers)
                 {
                 Write-Verbose "Adding user: $($AllowedUser.SamAccountName)"
@@ -105,7 +105,7 @@ Param(
 
             #--- Compare and remove users from group ---
             $RemovedUsers = $AnyUsers | Where {$_.SamAccountName -notin $Users.SamAccountName}
-            Write-Output "Keelatud: $($RemovedUsers.Count)"
+            Write-Output "Denied count: $($RemovedUsers.Count)"
             ForEach ($RemovedUser in $RemovedUsers)
                 {
                 Write-Verbose "Removing user: $($RemovedUser.SamAccountName)"
